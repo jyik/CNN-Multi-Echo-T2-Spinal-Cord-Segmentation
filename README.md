@@ -65,3 +65,4 @@ data_gen_args = dict(rotation_range=180.,
 ```
 Trained for about 15 epochs with 500 iterations each.
 ### Spinal Cord Model
+Trained spinal cord model the exact same way as T2 model. Inputs were the cropped images, network predictions were also cropped. Data augmentation parameters/arguments were exactly the same as T2 model.
