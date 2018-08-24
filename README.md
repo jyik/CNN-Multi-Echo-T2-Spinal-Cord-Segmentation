@@ -106,7 +106,10 @@ A comparison of Dice Coefficient was conducted between the sets of the ground tr
 
 ![sctvsnn2](https://user-images.githubusercontent.com/28941980/44606852-62915680-a7a3-11e8-9e5b-66405b3904d1.png)
 
-## Summary
+## Summary (Workflow)
+| T1/T2 Model | Spinal Cord Model |
+| :---: | :---: |
+| ![screen shot 2018-08-24 at 3 00 18 pm](https://user-images.githubusercontent.com/28941980/44609894-7e4e2a00-a7ae-11e8-89b0-56246255e915.png) | ![screen shot 2018-08-24 at 2 55 55 pm](https://user-images.githubusercontent.com/28941980/44609750-e51f1380-a7ad-11e8-81b4-877f8475be78.png) |
 
 ## Future Direction
 - [x] Change crop and zoom and resizing from keras (Changed to using `skimage.transform.rescale` for zoom and resize and numpy indexing for crop)
