@@ -105,3 +105,12 @@ A comparison of Dice Coefficient was conducted between the sets of the ground tr
 | **Ground Truths** | 0.3831 | 0.6332 |
 
 ![sctvsnn2](https://user-images.githubusercontent.com/28941980/44606852-62915680-a7a3-11e8-9e5b-66405b3904d1.png)
+
+## Summary
+
+## Future Direction
+- [x] Change crop and zoom and resizing from keras (Changed to using `skimage.transform.rescale` for zoom and resize and numpy indexing for crop)
+- [ ] Reduce layers/operations and pick out only the important ones so no repeats
+- [ ] Compare and test with other networks/algorithms
+- [ ] Multi-class segmentation (white matter, gray matter, cerebrospinal fluid)
+- [ ] Lesion detection and segmentation
