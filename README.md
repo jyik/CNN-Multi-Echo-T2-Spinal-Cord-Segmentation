@@ -80,6 +80,8 @@ keras `model.evaluate()` used:
 | :---: | :---: | :---: | :---: | :---: | 
 | 0.0126 | 0.9948| 0.0239 | 0.9903 | 0.8873 |
 
+![Alt Text](testC11_slice150.png)
+
 ### T2-Weighted Model
 
 | Training Loss | Training Accuracy | Testing Loss | Testing Accuracy | DSC |
