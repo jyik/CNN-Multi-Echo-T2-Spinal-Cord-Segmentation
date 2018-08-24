@@ -74,3 +74,27 @@ keras `model.evaluate()` used:
 - Spinal Cord: tested on 1 spinal cord dataset
 
 ## Results
+### T1-Weighted Model
+
+| Training Loss | Training Accuracy | Testing Loss | Testing Accuracy | DSC |
+| :---: | :---: | :---: | :---: | :---: | 
+| 0.0126 | 0.9948| 0.0239 | 0.9903 | 0.8873 |
+
+### T2-Weighted Model
+
+| Training Loss | Training Accuracy | Testing Loss | Testing Accuracy | DSC |
+| :---: | :---: | :---: | :---: | :---: | 
+| 0.0386 | 0.9660| 0.0405 | 0.9837 | 0.8495 |
+
+### Spinal Cord Model
+
+| Training Loss | Training Accuracy | Testing Loss | Testing Accuracy | DSC |
+| :---: | :---: | :---: | :---: | :---: | 
+| 0.0553 | 0.9936| 0.0128 | 0.9942 | 0.6332 |
+
+A comparison of Dice Coefficient was conducted between the sets of the ground truths with the neural network and the ground truths with Spinal Cord Toolbox segmentation (first run `sct_propseg` to get spinal cord segmentation then run `sct_segment_graymattter` for gray matter segmentation):
+
+| DSC | Spinal Cord Toolbox | Neural Network Prediction |
+| :---: | :---: | :---: |
+| **Ground Truths** | 0.3831 | 0.6332 |
+
