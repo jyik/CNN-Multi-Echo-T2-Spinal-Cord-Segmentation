@@ -80,7 +80,7 @@ keras `model.evaluate()` used:
 | :---: | :---: | :---: | :---: | :---: | 
 | 0.0126 | 0.9948| 0.0239 | 0.9903 | 0.8873 |
 
-![Alt Text](testC11_slice150.png)
+![testc11_slice150](https://user-images.githubusercontent.com/28941980/44606791-307ff480-a7a3-11e8-882f-de40703ef163.png)
 
 ### T2-Weighted Model
 
@@ -88,11 +88,15 @@ keras `model.evaluate()` used:
 | :---: | :---: | :---: | :---: | :---: | 
 | 0.0386 | 0.9660| 0.0405 | 0.9837 | 0.8495 |
 
+![t2_2](https://user-images.githubusercontent.com/28941980/44606895-86ed3300-a7a3-11e8-89c6-9f5eb57b2e14.png)
+
 ### Spinal Cord Model
 
 | Training Loss | Training Accuracy | Testing Loss | Testing Accuracy | DSC |
 | :---: | :---: | :---: | :---: | :---: | 
 | 0.0553 | 0.9936| 0.0128 | 0.9942 | 0.6332 |
+
+![sc3](https://user-images.githubusercontent.com/28941980/44606857-67eea100-a7a3-11e8-80ad-9a4fde332f9a.png)
 
 A comparison of Dice Coefficient was conducted between the sets of the ground truths with the neural network and the ground truths with Spinal Cord Toolbox segmentation (first run `sct_propseg` to get spinal cord segmentation then run `sct_segment_graymattter` for gray matter segmentation):
 
@@ -100,3 +104,4 @@ A comparison of Dice Coefficient was conducted between the sets of the ground tr
 | :---: | :---: | :---: |
 | **Ground Truths** | 0.3831 | 0.6332 |
 
+![sctvsnn2](https://user-images.githubusercontent.com/28941980/44606852-62915680-a7a3-11e8-9e5b-66405b3904d1.png)
