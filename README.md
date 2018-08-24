@@ -63,6 +63,14 @@ data_gen_args = dict(rotation_range=180.,
                      horizontal_flip=True,
                      vertical_flip=True)
 ```
-Trained for about 15 epochs with 500 iterations each.
+Trained on 38 brains (1520 training examples). Trained for about 15 epochs with 500 iterations each.
 ### Spinal Cord Model
-Trained spinal cord model the exact same way as T2 model. Inputs were the cropped images, network predictions were also cropped. Data augmentation parameters/arguments were exactly the same as T2 model.
+Trained spinal cord model the exact same way as T2 model. Inputs were the cropped images, network predictions were also cropped. Data augmentation parameters/arguments were exactly the same as T2 model. Trained on 7 samples (112 training examples). Trained for about 15 epochs with 200 iterations each.
+
+## Testing
+keras `model.evaluate()` used:
+- T1: tested on 1 brain
+- T2: tested on 11 brains
+- Spinal Cord: tested on 1 spinal cord dataset
+
+## Results
