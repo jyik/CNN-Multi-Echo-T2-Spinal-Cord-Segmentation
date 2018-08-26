@@ -12,12 +12,12 @@ Models:
 ## Pre-Processing
 Neural network input images were 2D 256x256. For brain segmentation, all brains were extracted first using FSL `bet` command. For image sizes less than 256x256 zero padding at the beginning and cropping at the end was done or the other way around for image sizes greater than 256x256. (**Resizing or scaling instead of cropping might be better but I ended up using crop because after brain extraction, a lot of blank space is left. Spinal cord data should use resizing or scaling.**)
 
-Everything was done in [Jupyter Notebook](jupyter.org/). `nibabel.load()` was used to import Nifti formatted images into the notebooks and `nibabel.load().get_data` to convert to Numpy arrays. Normalization was then done on images:
-- For T1 brain: values divided by gloval maximum (**Maybe dividing by maximum of each slice would be better**)
+Everything was done in [Jupyter Notebook](jupyter.org/). Handling of MRI images was done using [Nibabel](http://nipy.org/nibabel/): `nibabel.load()` was used to import Nifti formatted images into the notebooks and `nibabel.load().get_data` to convert to Numpy arrays. Normalization was then done on images:
+- For T1 brain: values divided by global maximum (**Maybe dividing by maximum of each slice would be better**)
 - For T2 brain: each echo was treated independently and each slice was treated independently, so values were divided by the maximum value of each slice for every echo.
 - For spinal cord: values divided by global maximum (**Maybe dividing by maximum of each slice would be better**)
 
-All images' dimensions were altered using `numpy.swapaxes()` and `numpy.expand_dims()` to conform to Tensorflow's input shape (Nx256x256xC where N is number of slices and C is number of channels (1 for T1 brain, 32 for T2 brain, 1 for spinal cord)).
+All images' dimensions were altered using `numpy.swapaxes()` and `numpy.expand_dims()` to conform to [Tensorflow](https://www.tensorflow.org/)'s input shape (Nx256x256xC where N is number of slices and C is number of channels (1 for T1 brain, 32 for T2 brain, 1 for spinal cord)).
 
 For T1 and T2 models, binarizing ground truths is necessary because ground truths will have 3 classes.
 
@@ -46,7 +46,7 @@ flirt -in T1_bet_seg.nii.gz -ref GRASE_bet.nii.gz -applyxfm -init T1toT2.mat -ou
 Manual segmentation by hand using FSLeyes
 
 ## Training
-Keras was used for everything (making the model, training, testing, etc.). To compile:
+[Keras](https://keras.io/) was used for everything (making the model, training, testing, etc.). To compile:
 - Optimizer: Adam
 - Loss: Binary Cross-Entropy
 - Metrics: Accuracy
@@ -105,6 +105,11 @@ A comparison of Dice Coefficient was conducted between the sets of the ground tr
 | **Ground Truths** | 0.3831 | 0.6332 |
 
 ![sctvsnn2](https://user-images.githubusercontent.com/28941980/44606852-62915680-a7a3-11e8-9e5b-66405b3904d1.png)
+
+## Post-Processing
+- For T1, no post-processing needed because native image is already 256x256
+- For T2, since zero-padding is done at beginning to get from 240x240 to 256x256, cropping is done after to go back to 240x240
+- For spinal cord, resizing was done by first creating a new array of zeros with the original image size then resizing the predictions using `skimage.transform.rescale()`, and finally, using numpy indexing to replace zeros with resized predictions using crops from pre-processing. 
 
 ## Summary (Workflow)
 | T1 / T2 Model | Spinal Cord Model |
