@@ -54,6 +54,8 @@ Manual segmentation by hand using FSLeyes
 ### T1-Weighted Model
 Simple training (No data augmentation). Trained on 7 brains (1120 training examples). 7 epochs, quick and simple
 ### T2-Weighted Model
+Transfered model from T1 but weights for the first convolution were mismatched because of the channels (1 vs 32). So before training, the weights for this first convolution layer was repeated to a size of 32.
+
 Used data augmentation with settings:
 ```
 data_gen_args = dict(rotation_range=180.,
